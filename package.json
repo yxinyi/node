@@ -1,5 +1,8 @@
 {
 	"name": "file_explorer",
 	"version": "0.0.1",
-	"description": "A command_file file explorer!"
+	"description": "A command_file file explorer!",
+	"dependencies": {
+		"superagent": "^0.3.0"
+	}
 }

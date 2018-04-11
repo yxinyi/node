@@ -28,7 +28,7 @@ fs.readdir(process.cwd(), function (err, _firles){
 				read();
 			}else{
 				file(i);
-			}
+			}0
 		})
 
 	}
