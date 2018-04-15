@@ -2,6 +2,10 @@
 	"name": "my_test_connect",
 	"version": "0.0.1",
 	"dependencies": {
-		"connect": "1.8.7"
+		"body-parser": "^1.18.2",
+		"connect": "^3.0.0",
+		"express": "^4.16.3",
+		"morgan": "^1.9.0",
+		"serve-static": "^1.13.2"
 	}
 }
