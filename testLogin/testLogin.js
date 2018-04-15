@@ -11,8 +11,8 @@ app.use(bodyParser.text({type: 'text/html'}));
 app.use(cookieParser());
 app.use(session({secret: 'yxy secret', cookie: {maxAge: 6000000},  resave: true, saveUninitialized: true }));
 app.use(function(req,res,next){
-	console.log(req.session.logged_in);
 	if('/' == req.url && req.session.logged_in){
+		console.log('req.session.logged_in');
 		res.writeHead(200, {'Content-Type':'text/html'});
 		res.end('Welcome back, <b>'+req.session.name+'<b>' +'<a href="/logout">Logout</a>');
 	}
@@ -20,7 +20,8 @@ app.use(function(req,res,next){
 });
 
 app.use(function(req,res,next){
-	if('/' == req.url && 'GET' == req.method){
+	if('/' == req.url && 'GET' == req.method&& !req.session.logged_in){
+		console.log('GET == req.method');
 		res.writeHead(200, {'Content-Type':'text/html'});
 		res.end([
 			'<form action="/login" method="POST"',
@@ -38,6 +39,7 @@ app.use(function(req,res,next){
 
 app.use(function(req,res,next){
 	if('/login' == req.url && 'POST' == req.method){
+		console.log('POST == req.method');
 		console.log(req.body.name);
 		console.log(req.body.password);
 		console.log(users);
@@ -55,6 +57,7 @@ app.use(function(req,res,next){
 });
 app.use(function(req,res,next){
 	if('/logout'==req.url){
+		console.log('logout');
 		req.session.logged_in = false;
 		res.writeHead(200);
 		res.end('logout ok!');			
